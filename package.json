@@ -4,8 +4,10 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
+    "@capacitor-community/bluetooth-le": "^2.0.1",
     "@capacitor/app": "^4.1.1",
     "@capacitor/core": "^4.5.0",
+    "@capacitor/ios": "4.5.0",
     "@capacitor/status-bar": "^4.1.0",
     "@ionic/react": "^6.3.7",
     "react": "^18.2.0",
@@ -15,20 +17,22 @@
   },
   "devDependencies": {
     "@capacitor/cli": "4.5.0",
-    "react-scripts": "^5.0.0",
-    "jest": "^29.3.1",
     "@testing-library/react": "^13.4.0",
-    "typescript": "^4.7.4",
-    "@types/node": "^12.19.15",
     "@types/jest": "^29.2.3",
+    "@types/node": "^12.19.15",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@types/react-router": "^5.1.11",
-    "@types/react-router-dom": "^5.1.7"
+    "@types/react-router-dom": "^5.1.7",
+    "@types/uuid": "^8.3.4",
+    "jest": "^29.3.1",
+    "react-scripts": "^5.0.0",
+    "typescript": "^4.7.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build_ios": "ionic capacitor build ios --prod",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
     "eject": "react-scripts eject"
   },

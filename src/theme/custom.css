@@ -1,0 +1,40 @@
+ion-content button,
+ion-content .button {
+    margin: 5px;
+    padding: 0px 10px 0px;
+
+    width: auto;
+    height: 50px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 50px;
+
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+
+    color: var(--ion-color-light-contrast);
+    background-color: var(--ion-color-light);
+
+    cursor: pointer;
+
+    -webkit-appearance: button;
+
+    box-sizing: border-box;
+    display: block;
+
+    border-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.center-childs {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
