@@ -55,7 +55,7 @@ const Home: React.FC = () => {
 
   const share = () => {
     const current_uuid = uuid();
-    const shareObject = { "uuid": current_uuid, "deviceId": deviceId, "startTime": startTime, "endTime": endTime, "accelerations": accelerations };
+    const shareObject = { "uuid": current_uuid, "deviceId": deviceId, "deviceName": deviceName, "startTime": startTime, "endTime": endTime, "accelerations": accelerations };
     const fileName = `${current_uuid}.json`;
     const file = new File([JSON.stringify(shareObject)], fileName, { type: "application/json" });
     shareLocal(fileName, file);
