@@ -33,6 +33,21 @@ export async function connectToDevice(): Promise<BleDeviceWrapper> {
     }
 }
 
+export async function disconnectFromDevice(deviceId: string): Promise<void> {
+    if (isPlatform('desktop')) {
+        alert("BLE not supported on Desktop!");
+        return Promise.reject()
+    }
+    try {
+        BleClient.disconnect(deviceId)
+        console.log(`disconnected from device '${deviceId}'.`,);
+        return Promise.resolve();
+    } catch (error) {
+        console.error(`failed to disconnect from device.`, error);
+        return Promise.reject(error);
+    }
+}
+
 export async function subscribeToNotifications(deviceId: string, dataCallback: (record: AccelerationRecord) => void): Promise<void> {
     if (isPlatform('desktop')) {
         alert("BLE not supported on Desktop!");

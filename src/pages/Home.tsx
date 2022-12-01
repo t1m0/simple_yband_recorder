@@ -2,7 +2,7 @@ import { IonButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToo
 import { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import AccelerationRecord from '../ble/AccelerationRecord';
-import { connectToDevice, subscribeToNotifications, unSubscribeToNotifications } from '../ble/BLEWrapper';
+import { connectToDevice, disconnectFromDevice, subscribeToNotifications, unSubscribeToNotifications } from '../ble/BLEWrapper';
 import { shareLocal } from '../share';
 
 const Home: React.FC = () => {
@@ -21,6 +21,14 @@ const Home: React.FC = () => {
   useIonViewDidLeave(() => {
     unsubscribe();
   });
+
+  const reconnect = () => {
+    if (deviceId) {
+      disconnectFromDevice(deviceId).then(connect);
+    } else {
+      connect();
+    }
+  }
 
   const connect = () => {
     connectToDevice()
@@ -82,7 +90,7 @@ const Home: React.FC = () => {
         <IonToolbar>
           <IonTitle>YBand Recorder</IonTitle>
           <IonButtons>
-            <IonButton onClick={connect}>Reconnect</IonButton>
+            <IonButton onClick={reconnect}>Reconnect</IonButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
