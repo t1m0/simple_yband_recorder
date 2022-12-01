@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, useIonViewDidLeave } from '@ionic/react';
+import { IonButton, IonButtons, IonContent, IonHeader, IonPage, IonTitle, IonToolbar, useIonViewDidLeave } from '@ionic/react';
 import { useEffect, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 import AccelerationRecord from '../ble/AccelerationRecord';
@@ -81,6 +81,9 @@ const Home: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonTitle>YBand Recorder</IonTitle>
+          <IonButtons>
+            <IonButton onClick={connect}>Reconnect</IonButton>
+          </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
