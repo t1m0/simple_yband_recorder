@@ -15,6 +15,14 @@ const Home: React.FC = () => {
   const [accelerations, setAccelerations] = useState(new Array<AccelerationRecord>());
 
   useEffect(() => {
+    connect();
+  }, []);
+
+  useIonViewDidLeave(() => {
+    unsubscribe();
+  });
+
+  const connect = () => {
     connectToDevice()
       .then(device => {
         setDeviceId(device.id);
@@ -23,12 +31,9 @@ const Home: React.FC = () => {
       .catch(err => {
         alert("Failed to connect to ble device!");
         console.log("Failed to connect!", err);
+        connect();
       });
-  }, []);
-
-  useIonViewDidLeave(() => {
-    unsubscribe();
-  });
+  }
 
   const startRecording = () => {
     if (deviceId) {
@@ -50,7 +55,7 @@ const Home: React.FC = () => {
 
   const share = () => {
     const current_uuid = uuid();
-    const shareObject = { "uuid": current_uuid, "device": deviceId, "startTime": startTime, "endTime": endTime, "accelerations": accelerations };
+    const shareObject = { "uuid": current_uuid, "deviceId": deviceId, "startTime": startTime, "endTime": endTime, "accelerations": accelerations };
     const fileName = `${current_uuid}.json`;
     const file = new File([JSON.stringify(shareObject)], fileName, { type: "application/json" });
     shareLocal(fileName, file);
