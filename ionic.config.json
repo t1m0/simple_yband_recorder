@@ -1,0 +1,7 @@
+{
+  "name": "simple_yband_recorder",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
